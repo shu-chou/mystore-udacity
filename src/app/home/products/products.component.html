@@ -1,0 +1,52 @@
+<div class="container mt-3">
+  <div *ngIf="!isFetching; else elseBlock">
+      <div class="row row-cols-3">
+        <div class="col mb-4" *ngFor="let product of products">
+          <div class="card mb-3 card-dimension">
+            <a (click)="openProduct(product.id)">
+                <div class="card-body">
+                  <p class="card-title dot-text">{{ product.title }}</p>
+                </div>
+              <div class="card-body">
+                <img
+                  [src]="product.image"
+                  class="img-fluid card-img-dim"
+                  alt="image"
+                />
+              </div>
+              <div class="card-body">
+                <div class="row row-cols-2">
+                  <div class="col">
+                    <small>Rating:{{ product.rating.rate }}</small>
+                  </div>
+                  <div class="col">
+                    <small>Price:${{ product.price }}</small>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <div class="card-footer">
+              <button
+                type="button"
+                class="btn btn-primary btn-sm"
+                (click)="addToCart(product)"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <ng-template #elseBlock>
+    <div class="alert alert-dismissible alert-warning">
+        <h4 class="alert-heading">Fetching products</h4>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" [ngStyle]="{'width': updateWidth()}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+      </div>
+    
+  </ng-template>
+</div>
+
+

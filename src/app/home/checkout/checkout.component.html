@@ -1,0 +1,250 @@
+<div class="container mt-2 mb-2">
+  <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <div class="row">
+      <div class="col">
+        <h5>Personal Detail</h5>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="floatingFirstName"
+                  placeholder="First Name"
+                  ngModel
+                  name="firstname"
+                  required
+                  [pattern]="strPattern"
+                  #firstname="ngModel"
+                  autocomplete="off"
+                />
+                <label for="floatingFirstName">First Name</label>
+                <span
+                  *ngIf="!firstname.valid && firstname.touched"
+                  class="help-block warning-msg"
+                  >Please enter a valid value</span
+                >
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="floatingLastName"
+                  placeholder="Last Name"
+                  ngModel
+                  name="lastname"
+                  [pattern]="strPattern"
+                  #lastname="ngModel"
+                  autocomplete="off"
+                />
+                <label for="floatingLastName">Last Name</label>
+                <span
+                  *ngIf="!lastname.valid && lastname.touched"
+                  class="help-block warning-msg"
+                  >Please enter a valid value</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="form-floating mt-2">
+            <input
+              type="email"
+              class="form-control"
+              id="floatingEmail"
+              placeholder="name@example.com"
+              ngModel
+              name="email"
+              required
+              email
+              #email="ngModel"
+              autocomplete="off"
+            />
+            <label for="floatingEmail">Email address</label>
+            <span
+              *ngIf="!email.valid && email.touched"
+              class="help-block warning-msg"
+              >Please enter a valid value</span
+            >
+          </div>
+          <div class="form-floating mt-2">
+            <input
+              type="email"
+              class="form-control"
+              id="floatingNumber"
+              placeholder="999999999"
+              ngModel
+              name="phone"
+              required
+              [pattern]="phoneNumPattern"
+              #phone="ngModel"
+              autocomplete="off"
+            />
+            <label for="floatingNumber">Phone number</label>
+            <span
+              *ngIf="!phone.valid && phone.touched"
+              class="help-block warning-msg"
+              >Please enter a valid value</span
+            >
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label mt-2"><b>Shipping Address</b></label>
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingAddress1"
+              placeholder="Address Line 1"
+              ngModel
+              name="address1"
+              required
+              #address1="ngModel"
+              autocomplete="off"
+            />
+            <label for="floatingAddress1">Address Line 1</label>
+            <span
+              *ngIf="!address1.valid && address1.touched"
+              class="help-block warning-msg"
+              >Please enter a valid value</span
+            >
+          </div>
+          <div class="form-floating mt-1">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingAddress2"
+              placeholder="Address Line 2"
+              ngModel
+              name="address2"
+              required
+              #address2="ngModel"
+              autocomplete="off"
+            />
+            <label for="floatingAddress2">Address Line 2</label>
+            <span
+              *ngIf="!address2.valid && address2.touched"
+              class="help-block warning-msg"
+              >Please enter a valid value</span
+            >
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-floating mt-1">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="floatingCity"
+                  placeholder="City"
+                  ngModel
+                  name="city"
+                  required
+                  [pattern]="strPattern"
+                  #city="ngModel"
+                  autocomplete="off"
+                />
+                <label for="floatingCity">City</label>
+                <span
+                  *ngIf="!city.valid && city.touched"
+                  class="help-block warning-msg"
+                  >Please enter a valid value</span
+                >
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-floating mt-1">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="floatingState"
+                  placeholder="State"
+                  ngModel
+                  name="state"
+                  required
+                  [pattern]="strPattern"
+                  #state="ngModel"
+                  autocomplete="off"
+                />
+                <label for="floatingState">State</label>
+                <span
+                  *ngIf="!state.valid && state.touched"
+                  class="help-block warning-msg"
+                  >Please enter a valid value</span
+                >
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-floating mt-1">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="floatingZip"
+                  placeholder="Zip Code"
+                  ngModel
+                  name="zipcode"
+                  required
+                  #zipcode="ngModel"
+                />
+                <label for="floatingZip">ZipCode</label>
+                <span
+                  *ngIf="!zipcode.valid && zipcode.touched"
+                  class="help-block warning-msg"
+                  >Please enter a valid value</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <h5>Cart Summary</h5>
+        <div class="container">
+          <div class="row">
+            <div class="col" style="padding-left: 0">Cost of {{summary.quantity}} Items</div>
+            <div class="col text-right">$ {{roundCost()}}</div>
+          </div>
+          <div class="row">
+            <div class="col" style="padding-left: 0">Shipping</div>
+            <div class="col text-right">$ {{summary.shipping}}</div>
+          </div>
+          <div class="row">
+            <div class="col" style="padding-left: 0">Tax</div>
+            <div class="col text-right">$ {{summary.tax}}</div>
+          </div>
+          <div class="row">
+            <div class="col" style="padding-left: 0">Discount</div>
+            <div class="col text-right">$ {{ summary.discount }}</div>
+          </div>
+
+          <div class="row">
+            <hr />
+            <div class="col" style="padding-left: 0">Total</div>
+            <div class="col text-right">$ {{roundedTotal()}}</div>
+          </div>
+        </div>
+        <p class="text-success mt-5">
+          By Clicking below you agree to share your personal data with MyStore
+          Inc, and its service partner to fulfill your purchase. Your data is
+          protected by the Privacy Statement and Data Protection applied by the
+          Law, and share of information is solely for the purpose of providing
+          the service chosen.
+        </p>
+        <div class="col align-self-end mt-2">
+          <div class="d-grid gap-2">
+            <button
+              class="btn btn-lg btn-primary"
+              type="submit"
+              [disabled]="!form.valid"
+            >
+              Confirm Buy
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

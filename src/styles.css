@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootswatch/dist/quartz/bootstrap.min.css";
+
+*{
+  cursor: default;
+}
+
+.card-dimension{
+  height: 32rem;
+  width: 20rem;
+}
+
+.img-dimension {
+    max-height: 10rem;
+    max-width: 12rem;
+}
+
+.img-size{
+  height: 30rem;
+  width: 20rem;
+}

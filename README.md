@@ -1,27 +1,100 @@
+
 # MyStore
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
+MyStore is a ecommerce application build for Udacity Full Stack Developer program.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Features
 
-## Code scaffolding
+- Display Products
+- Display Product Details
+- Add to Cart
+- Checkout by filling person details
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## About Stack
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+The project is built on Angular v14.0, Angular CLI v14.0, Bootstrap 5, open source API (`https://fakestoreapi.com/`) for making get request 
+## Backend
 
-## Running unit tests
+The app doesnt have any active backend. The `GET` http request are made using the open source API (`https://fakestoreapi.com/`)
+## Frontend
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Front is built upon ANgular v14.0
 
-## Running end-to-end tests
+Folder Structure
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- `home` : This is Home component which holds all the major components of the app and programatically route to those component using Angular Routing.
+- `products` : This component is used to display the list of products which are fetched on the home page of the app. This is the first route which is activated when the app is loaded.
+- `product-detail`: This component is used to display the product detail based on a specific prodct id
+- `cart`: This component is used to display the cart items and proceed to checkout
+- `checkout`: This component is where the user enter their personal detail to buy the cart items.
+- `order-confirm`: This component confirms the order placement, and redirect user back to Home component.
+- `not-found`: This component is use to display a 404 when the user try to visit a route not available in the app.
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Installation
+
+Fork, Clone or Copy and open terminal/command prompt/powershell in the program directory
+
+Navigate to project directory
+
+```bash
+  cd MyStore
+```
+
+ Install the dependencies via npm
+
+ ```bash
+  npm install
+```
+
+Run the app
+
+```bash
+  ng serve
+```
+
+The app open on localhost:4200 by default, in the browser type or go to `http://localhost/4200` to open the app.
+
+
+## API Reference
+
+`https://fakestoreapi.com/` API is used for fetching products and their details.
+Which is an open source API for faking a store.
+
+
+
+#### Get all products
+
+```http
+  GET https://fakestoreapi.com/products
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Not Required** |
+
+
+#### Get product detail
+
+```http
+  GET https://fakestoreapi.com/products/${id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of product to fetch |
+
+
+
+
+## Authors
+
+- [@shu-chou](https://github.com/shu-chou)
+
+## Acknowledgements
+
+ - Udacity's Angular Fundamental course instructor Andrew Wong 
+ - Program mentor Ujjawal Sharma, and all the program batchmates
+ - [Bipin Gosain](https://github.com/bipinGosain) for helping me understand Services basics and folder structure in Angular.

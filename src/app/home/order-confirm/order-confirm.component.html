@@ -1,0 +1,20 @@
+<div class="container mt-5">
+    <div *ngIf="confirmed; else elseBlock" class="alert alert-dismissible alert-success">
+        <h4 class="alert-heading">Order Confirmed!</h4>
+        <p class="mb-0">Thank you for shopping with us!!!</p>
+        <p class="mb-0">Your package should reach you in 3-5 business days.</p>
+        <p class="mb-0">You will received a confirm order and order updates on the registered email address.</p>
+        <p class="mb-0">You will be automatically redirected in a few!!</p>
+      </div>
+      <ng-template #elseBlock>
+        <div class="alert alert-dismissible alert-warning">
+            <h4 class="alert-heading">We are confirming your order. Please wait!!!</h4>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" [ngStyle]="{'width': updateWidth()}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+          </div>
+        
+      </ng-template>
+
+</div>
+

@@ -1,0 +1,40 @@
+<div class="container mb-5">
+  <div class="row">
+    <div class="col">
+      <div>
+        <h5><b>Summary</b></h5>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col" style="padding-left: 0">
+            Cost of {{ summary.quantity }} Items
+          </div>
+          <div class="col text-right">$ {{ roundItemCost() }}</div>
+        </div>
+        <div class="row">
+          <div class="col" style="padding-left: 0">Shipping</div>
+          <div class="col text-right">$ {{calculateShipping()}}</div>
+        </div>
+        <div class="row">
+          <div class="col" style="padding-left: 0">Tax</div>
+          <div class="col text-right">$ {{calculateRoundedTax()}}</div>
+        </div>
+        <div class="row">
+          <div class="col" style="padding-left: 0">Discount</div>
+          <div class="col text-right">$ {{calculateDiscount()}}</div>
+        </div>
+
+        <div class="row">
+          <hr>
+          <div class="col" style="padding-left: 0">Total</div>
+          <div class="col text-right">$ {{calculateTotal()}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col align-self-end">
+      <div class="d-grid gap-2">
+        <button class="btn btn-lg btn-primary" type="button" (click)="proceedCheckout()">Checkout</button>
+      </div>
+    </div>
+  </div>
+</div>

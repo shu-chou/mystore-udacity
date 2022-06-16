@@ -1,0 +1,43 @@
+<div class="container mt-4">
+  <div *ngIf="!isFetchingProduct; else elseBlock">
+    <div *ngIf="!error; else elseBlock">
+      <div class="row row-cols-2">
+        <div class="col">
+          <img [src]="product.image" alt="" class="img-fluid img-size" />
+        </div>
+        <div class="col">
+          <h2>{{ product.title }}</h2>
+          <p>{{ product.description }}</p>
+          <p>Category: {{ product.category }}</p>
+          <p>Rating: {{ rating }}</p>
+          <p>Price: ${{ product.price }}</p>
+          <h3 class="text-success">In Stock</h3>
+          <div class="d-grid gap-2">
+            <button
+              class="btn btn-lg btn-primary"
+              type="button"
+              (click)="addToCart(product)"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #elseBlock>
+      <div class="alert alert-dismissible alert-warning">
+        <h4 class="alert-heading">Could Not Find </h4>
+      </div>
+    </ng-template>
+  </div>
+  <ng-template #elseBlock>
+    <div class="alert alert-dismissible alert-warning">
+      <h4 class="alert-heading">Fetching product</h4>
+      <div class="progress">
+          <div class="progress-bar" role="progressbar" [ngStyle]="{'width': updateWidth()}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div>
+  </ng-template>
+</div>
+
+
